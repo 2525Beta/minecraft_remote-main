@@ -3,7 +3,16 @@ import param_MCJE as param
 import axis_flat
 import time
 
-mc = Minecraft.create(port=param.PORT_MC)
-pos = mc.player.getTilePos()
+Materials = param.GOLD_BLOCK
+X,Y,Z = -10,3,-10
 
-axis_flat.reset_minecraft_world(mc, width=100)
+mc = Minecraft.create(port=param.PORT_MC)
+mc.postToChat("接続完了")
+
+
+mc.setBlocks( X, Y, Z, X-5, Y+5, Z+5, Materials)
+mc.setBlocks(X-1, Y+1, Z+1, X-4, Y+4, Z+4, param.AIR)
+mc.setBlocks( X, Y+1, Z+4,  X, Y+2, Z+4, param.AIR)
+
+mc.setBlocks( X, Y+2, Z+2,  X, Y+3, Z+1, param.GLASS)
+mc.setBlocks(X-4, Y+1, Z+5, param.CRAFTING_BLOCK)
